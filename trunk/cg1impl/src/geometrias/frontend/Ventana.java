@@ -4,42 +4,46 @@
  */
 package geometrias.frontend;
 
-import geometrias.Renderer;
+// Librerias de Swing - GUI
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import javax.swing.JFrame;
+
+// Librerias de OpenGL
 import javax.media.opengl.GLCapabilities;
 import javax.media.opengl.GLProfile;
 import javax.media.opengl.awt.GLCanvas;
-import javax.swing.JFrame;
+// Clase para presentación de dibujo de OpenGL
+import geometrias.Renderer_Punto;
 
 /**
  *
  * @author hernan
  */
-public class Ventana extends JFrame {
+public class Ventana {
 
     public static void main(String[] args) {
-        // setup OpenGL Version 2
+        // 1. Configuración de OpenGL Version 2
         GLProfile profile = GLProfile.get(GLProfile.GL2);
-        GLCapabilities capabilities = new GLCapabilities(profile);
+        GLCapabilities 
+                capabilities = new GLCapabilities(profile);
 
-        // The canvas is the widget that's drawn in the JFrame
+        // 2. Canvas es el aplicativo gráfico que se empotra en un JFrame - Ventana
         GLCanvas glcanvas = new GLCanvas(capabilities);
-        glcanvas.addGLEventListener(new Renderer());
+        glcanvas.addGLEventListener(new Renderer_Punto());
         glcanvas.setSize(400, 400);
-
-        JFrame frame = new JFrame("Hello World");
+        
+        // 3. Crear la ventana para mostrar la aplicación de dibujo
+        JFrame frame = new JFrame("Aplicación de OpenGL");
         frame.getContentPane().add(glcanvas);
-
-        // shutdown the program on windows close event
+        // 4. Añadir el evento para cerrar la ventana
         frame.addWindowListener(new WindowAdapter() {
-
             @Override
             public void windowClosing(WindowEvent ev) {
                 System.exit(0);
             }
         });
-
+        // 5. Cambiar el tamaño de la ventana y visualizarla
         frame.setSize(frame.getContentPane().getPreferredSize());
         frame.setVisible(true);
     }
