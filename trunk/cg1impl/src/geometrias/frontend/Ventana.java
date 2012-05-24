@@ -14,7 +14,7 @@ import javax.media.opengl.GLCapabilities;
 import javax.media.opengl.GLProfile;
 import javax.media.opengl.awt.GLCanvas;
 // Clase para presentación de dibujo de OpenGL
-import geometrias.Renderer_Punto;
+import geometrias.puntos.Renderer_Punto_Aleatorios;
 
 /**
  *
@@ -30,7 +30,7 @@ public class Ventana {
 
         // 2. Canvas es el aplicativo gráfico que se empotra en un JFrame - Ventana
         GLCanvas glcanvas = new GLCanvas(capabilities);
-        glcanvas.addGLEventListener(new Renderer_Punto());
+        glcanvas.addGLEventListener(new Renderer_Punto_Aleatorios());
         glcanvas.setSize(400, 400);
         
         // 3. Crear la ventana para mostrar la aplicación de dibujo

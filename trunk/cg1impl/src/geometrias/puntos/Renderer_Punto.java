@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package geometrias;
+package geometrias.puntos;
 
 // Librerias de registro de eventos
 import java.util.logging.Level;
@@ -20,7 +20,7 @@ public class Renderer_Punto implements GLEventListener {
 
     static final Logger logger = Logger.getLogger("BasicLoggingExample");
     //     
-    private GL2 gl;
+    protected GL2 gl;
 
     @Override
     public void init(GLAutoDrawable gLDrawable) {
@@ -48,6 +48,7 @@ public class Renderer_Punto implements GLEventListener {
     public void display(GLAutoDrawable drawable) {
         logger.log(Level.INFO, "Display");
         // 8. Especificar el dibujo de un punto
+        
         gl.glPointSize(10); // Determina el tamaño de un punto
         gl.glBegin(GL2.GL_POINTS);
         gl.glVertex2i(150, 150);
@@ -55,7 +56,7 @@ public class Renderer_Punto implements GLEventListener {
     }
     @Override
     public void dispose(GLAutoDrawable glad) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        // throw new UnsupportedOperationException("Not supported yet.");
     }
 
 }
