@@ -10,6 +10,7 @@ import javax.media.opengl.GL;
 import javax.media.opengl.GL2;
 import javax.media.opengl.GLAutoDrawable;
 import javax.media.opengl.GLEventListener;
+import javax.media.opengl.glu.GLU;
 
 /**
  *
@@ -50,6 +51,29 @@ public class Renderer_Punto_Entrada implements GLEventListener {
     }
 
     @Override
+    public void reshape(GLAutoDrawable glad, int x, int y, int width,
+            int height) {
+        logger.log(Level.INFO, "Reshape");
+        // 7. Especificar el área de dibujo (frame) utilizamos coordenadas
+
+
+        GLU glu = new GLU();
+//        gl.glMatrixMode(GL2.GL_PROJECTION);
+//        gl.glLoadIdentity();
+//        gl.glOrtho(0, width, 0, height, -1.0, 1.0);
+//        glu.gluLookAt(0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
+        gl.glViewport(0, 0, 680, 680);
+        gl.glMatrixMode(GL2.GL_PROJECTION);
+        gl.glLoadIdentity();
+        glu.gluPerspective(75, 680.0 / 680.0, 0.10, 100.0);
+        gl.glMatrixMode(GL2.GL_MODELVIEW);
+        gl.glLoadIdentity();
+        // glu.gluLookAt(0.0, 0.0, 20.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
+//Acercamos la cámara a los objetos
+
+    }
+
+    @Override
     public void display(GLAutoDrawable drawable) {
         gl.glClear(GL2.GL_COLOR_BUFFER_BIT);
 
@@ -61,7 +85,7 @@ public class Renderer_Punto_Entrada implements GLEventListener {
         dibujarPunto(this.x, this.y);
     }
 
-    protected void dibujarPunto(double x, double y) {
+    protected void dibujarPunto(int x, int y) {
         gl.glBegin(GL.GL_POINTS);
         gl.glVertex2d(x, y);
         gl.glEnd();
@@ -81,16 +105,5 @@ public class Renderer_Punto_Entrada implements GLEventListener {
 
     @Override
     public void dispose(GLAutoDrawable glad) {
-        
-    }
-
-    @Override
-    public void reshape(GLAutoDrawable glad, int x, int y, int width,
-            int height) {
-        logger.log(Level.INFO, "Reshape");
-        // 7. Especificar el área de dibujo (frame) utilizamos coordenadas
-        gl.glMatrixMode(GL2.GL_PROJECTION);
-        gl.glLoadIdentity();
-        gl.glOrtho(0, width, 0, height, -1.0, 1.0);
     }
 }

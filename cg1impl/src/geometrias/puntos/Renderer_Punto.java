@@ -28,6 +28,10 @@ public class Renderer_Punto implements GLEventListener {
         // Provee un objeto que enlaza las APIs del OpenGL
         // Que se encargara de realizar las instrucciones de dibujos 
         gl = gLDrawable.getGL().getGL2();
+        gl.glClear(GL2.GL_COLOR_BUFFER_BIT);
+        gl.glClear(GL2.GL_DEPTH_BUFFER_BIT);
+
+        gl.glClearColor(1.0f, 1.0f, 1.0f, 0.0f);
 
         // 6. Especificar el color del dibujo: Rojo
         gl.glColor3f(1.0f, 0.0f, 0.0f);
@@ -42,21 +46,22 @@ public class Renderer_Punto implements GLEventListener {
         gl.glMatrixMode(GL2.GL_PROJECTION);
         gl.glLoadIdentity();
         gl.glOrtho(0, width, 0, height, -1.0, 1.0);
+
     }
 
     @Override
     public void display(GLAutoDrawable drawable) {
         logger.log(Level.INFO, "Display");
         // 8. Especificar el dibujo de un punto
-        
+
         gl.glPointSize(10); // Determina el tamaño de un punto
         gl.glBegin(GL2.GL_POINTS);
         gl.glVertex2i(150, 150);
         gl.glEnd();
     }
+
     @Override
     public void dispose(GLAutoDrawable glad) {
         // throw new UnsupportedOperationException("Not supported yet.");
     }
-
 }
