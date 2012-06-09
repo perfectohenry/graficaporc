@@ -9,7 +9,7 @@
  * Asignatura: Computación Gráfica I
  */
 
-package geometrias.puntos;
+package geometrias.lineas;
 /*
  * Dibujo de líneas con pendiente -1<m<1
  * @author Hernan Nina Hanco 
