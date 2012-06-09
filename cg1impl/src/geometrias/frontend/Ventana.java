@@ -15,7 +15,7 @@ import javax.media.opengl.GLProfile;
 import javax.media.opengl.awt.GLCanvas;
 // Clase para presentación de dibujo de OpenGL
 import geometrias.puntos.Renderer_Punto_Aleatorios;
-import geometrias.puntos.Renderer_Linea;
+import geometrias.lineas.Renderer_Linea;
 import geometrias.puntos.Renderer_Punto;
 
 /**
