@@ -42,7 +42,7 @@ public class Ventana_Entrada extends JFrame implements ActionListener {
 
     // Inicializar la ventana
     private void inicializarVentana() {
-     
+        // habilita el botón cerrar de la ventana
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Crear un panel para ubicar el graficador Opengl
@@ -60,12 +60,10 @@ public class Ventana_Entrada extends JFrame implements ActionListener {
         glCanvas = new GLCanvas(capabilities);
         render_punto = new Renderer_Punto_Entrada();
         glCanvas.addGLEventListener(render_punto);  
-        
-        
-        pOpenGL.add(glCanvas);
+                
+        pOpenGL.add(glCanvas); // Se añade el graficador OpenGL al panel 
         glCanvas.setSize(500,500);
         
-
         // Crear el panel de entrada de datos
         pEntrada = new JPanel();
         pEntrada.setBorder(new TitledBorder(
@@ -77,43 +75,48 @@ public class Ventana_Entrada extends JFrame implements ActionListener {
         JLabel lblY = new JLabel("Y: ");
         txtY = new JTextField(5);
         btnDibujar = new JButton("Dibujar");
-
-        pEntrada.add(txtY);
+        // Añadir los controles al panel de entrada de datos
         pEntrada.add(lblX);
-        pEntrada.add(lblY);
         pEntrada.add(txtX);
+        pEntrada.add(lblY);
+        pEntrada.add(txtY);
         pEntrada.add(btnDibujar);
         
-        // hacer que el botón capte cuando se hace click sobre él.
+        // hacer que el botón capte eventos cuando se hace click sobre él.
         btnDibujar.addActionListener(this);
 
         // Añadir los paneles en la ventana
-        Container content = getContentPane();    // Obtener el contenedor de componentes
-        
+        // Obtener el contenedor de componentes
+        Container content = getContentPane();    
         content.add(pOpenGL, BorderLayout.CENTER);
         content.add(pEntrada, BorderLayout.SOUTH);
-        
+        // Mostrar ventana
         pack();
-        setVisible(true);                        // Mostrar ventana
-        
+        setVisible(true);                        
     }
+    /*
+     * Método para tratar eventos en el formulario.
+     */
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        Object source = e.getSource(); // Get source object reference
-        if (source == btnDibujar) { // Is it the pick button?
-            
+        // Identificar el objeto o control donde se genero el evento
+        Object source = e.getSource();
+        if (source == btnDibujar) { // si hay evento click en el botón
+            // ubicar las nuevas coordenadas del punto
             int x = Integer.parseInt(txtX.getText());
             int y = Integer.parseInt(txtY.getText());
+            // actualizar los valores de los puntos en el dibujador
             render_punto.setX(x);
             render_punto.setY(y);
+            // repintar el nuevo punto
             glCanvas.repaint();
-            System.out.println("Click en Dibujar..");
         }
     }
 
     public static void main(String args[]) {
-        Ventana_Entrada ventana = new Ventana_Entrada();
-
+        // iniciar la ventana
+        Ventana_Entrada ventana;
+        ventana = new Ventana_Entrada();
     }
 }
