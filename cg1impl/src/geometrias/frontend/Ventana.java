@@ -5,6 +5,7 @@
 package geometrias.frontend;
 
 // Librerias de Swing - GUI
+import geometrias.curvas.Renderer_Circulo;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
@@ -32,7 +33,7 @@ public class Ventana {
 
         // 2. Canvas es el aplicativo gráfico que se empotra en un JFrame - Ventana
         GLCanvas glcanvas = new GLCanvas(capabilities);
-        glcanvas.addGLEventListener(new Renderer_Linea());
+        glcanvas.addGLEventListener(new Renderer_Circulo());
                                         
         glcanvas.setSize(600, 600);
         
