@@ -56,7 +56,7 @@ public class Renderer_Linea implements GLEventListener {
         gl.glLoadIdentity();
         gl.glOrtho(-300, 300, -300, 300, -1.0, 1.0);
         // Dibujar un Sistema de Referencia.
-        dibujarSistemaReferencia(-300, 300, -300, 300);
+        // dibujarSistemaReferencia(-300, 300, -300, 300);
     }
     /*
      *  
@@ -140,8 +140,7 @@ public class Renderer_Linea implements GLEventListener {
     public void lineaBresenham(int x0, int y0, int xn, int yn) {
 
         // Identificar los valores x0,y0
-        int x = x0;
-        int y = y0;
+        int x = x0;       int y = y0;
         // Calcular la constantes deltax, deltay, 2.deltay y 2deltay-2deltax
         int deltax = xn-x0;
         int deltay = yn-y0;
