@@ -1,0 +1,1 @@
+En el presente proyecto se implementan diversos algoritmos de computación gráfica, como parte del Curso de Computación Gráfica I en la Universidad Nacional San Antonio Abad del Cusco.
